@@ -1,0 +1,55 @@
+#title{
+    margin-top: 150px;
+  }
+  #coefficient{
+    padding-left:10px;
+    text-align:center;
+    margin-right: 25px;
+  }
+  #letter , #equal{
+    font-weight: bolder;
+    font-size: 1.5em;
+  }
+  input{
+    margin-right: 20px;
+    width: 20px;
+  }
+  
+  .equal-sign{
+   margin-right: 20px;
+   font-weight: bold;
+   color: #979899;
+   font-size: 1.5em;
+  }
+  
+  input[type="number"], td, #value-check {
+    text-align: center;
+  }
+  #bracket-img{
+    margin-right: 20px;
+  }
+  #system-form{
+    margin-top:40px;
+  }
+  #system-submit-button{
+    margin-top: 20px;
+  }
+  
+  #divider, #multipliers, #divider2{
+    color: #4286f4;
+  }
+  
+  
+  
+  #comment{
+    font-weight: bolder;
+  }
+  #heading{
+    margin-top: 40px;
+  }
+  .table{
+    background-color: #f2f2f2;
+  }
+  #reCalculate, #tests{
+    display: none;
+  }

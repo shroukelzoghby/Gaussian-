@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gaussian elimination calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+  <h2 id="title">Gaussian elimination calculator</h2>
+  <p>Enter system values: </p>
+  <div class="container col-lg-12 d-flex justify-content-center">
+    <img id="bracket-img" src="Images/3.png" />
+  <form id="system-form">
+    <div class="form-group row">
+      <div class="col-xs-2 d-flex justify-content-start">
+        <input value="2.5" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+      <div class="col-xs-3 d-flex justify-content-between">
+        <input value="-3.12" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+      <div class="col-xs-4 d-flex justify-content-end">
+        <input value="-4.03" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+      <div class="col-xs-4 d-flex justify-content-end">
+        <span class="equal-sign">=</span>
+        <input value="-7.5" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-2 d-flex justify-content-start">
+        <input value="0.61" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+      <div class="col-xs-3 d-flex justify-content-between">
+        <input value="0.71" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+      <div class="col-xs-4 d-flex justify-content-end">
+        <input value="-0.05" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+      <div class="col-xs-4 d-flex justify-content-end">
+        <span class="equal-sign">=</span>
+        <input value="0.44" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-2 d-flex justify-content-start">
+        <input value="-1.03" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+      <div class="col-xs-3 d-flex justify-content-between">
+        <input value="-2.05" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+      <div class="col-xs-4 d-flex justify-content-end">
+        <input value="0.877" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+      <div class="col-xs-4 d-flex justify-content-end">
+        <span class="equal-sign">=</span>
+        <input value="-1.16" class="form-control shadow p-3 mb-2 bg-white rounded system-value" type="number">
+      </div>
+    </div>
+
+
+
+  </form>
+</div>
+  <button  onclick="getValues();"id="system-submit-button" type="button" class="btn btn-primary col-lg-12 d-flex justify-content-center">calculate</button>
+</div>
+
+
+<div class="container" id="tests">
+  <h2 id='heading'>Solution progress:</h2>
+  <!-- <p>The .table-bordered class adds borders to a table:</p> -->
+  <table class="table table-bordered  shadow p-3  bg-white rounded">
+    <tbody>
+      <tr>
+        <td id='a11_1'></td>
+        <td id='a12_1'></td>
+        <td id='a13_1'></td>
+        <td id='b1_1'></td>
+        <td id="divider"></td>
+      </tr>
+      <tr>
+        <td id='a21_1'></td>
+        <td id='a22_1'></td>
+        <td id='a23_1'></td>
+        <td id='b2_1'></td>
+      </tr>
+      <tr>
+        <td id='a31_1'></td>
+        <td id='a32_1'></td>
+        <td id='a33_1'></td>
+        <td id='b3_1'></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-bordered  shadow p-3 mb-5 bg-white rounded">
+    <tbody>
+      <tr>
+        <td id='a11_2'></td>
+        <td id='a12_2'></td>
+        <td id='a13_2'></td>
+        <td id='b1_2'></td>
+        <td id="multipliers"></td>
+      </tr>
+      <tr>
+        <td id='a21_2'></td>
+        <td id='a22_2'></td>
+        <td id='a23_2'></td>
+        <td id='b2_2'></td>
+      </tr>
+      <tr>
+        <td id='a31_2'></td>
+        <td id='a32_2'></td>
+        <td id='a33_2'></td>
+        <td id='b3_2'></td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="alert alert-primary">
+  <p id='comment'>Intermediate calculation => R1 * R2 x1 coefficient + R2</p>
+  <table class="table table-bordered  shadow p-3 mb-5 bg-white rounded ">
+    <tbody>
+      <tr class="text-primary">
+        <td id='a11_starp_1'></td>
+        <td id='a12_starp_1'></td>
+        <td id='a13_starp_1'></td>
+        <td id='b1_starp_1'></td>
+      </tr>
+      <tr class="text-primary">
+        <td id='a21_starp_1'></td>
+        <td id='a22_starp_1'></td>
+        <td id='a23_starp_1'></td>
+        <td id='b2_starp_1'></td>
+      </tr>
+      <tr>
+        <td id='a31_starp_1'></td>
+        <td id='a32_starp_1'></td>
+        <td id='a33_starp_1'></td>
+        <td id='b3_starp_1'></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="alert alert-primary">
+  <p id='comment' >Intermediate calculation => R1 * R3 x1 coefficient + R3</p>
+    <table class="table table-bordered  shadow p-3 mb-5 bg-white rounded">
+      <tbody>
+        <tr class="text-primary">
+          <td id='a11_starp_2'></td>
+          <td id='a12_starp_2'></td>
+          <td id='a13_starp_2'></td>
+          <td id='b1_starp_2'></td>
+        </tr>
+        <tr class="text-primary">
+          <td id='a21_starp_2'></td>
+          <td id='a22_starp_2'></td>
+          <td id='a23_starp_2'></td>
+          <td id='b2_starp_2'></td>
+        </tr>
+        <tr>
+          <td id='a31_starp_2'></td>
+          <td id='a32_starp_2'></td>
+          <td id='a33_starp_2'></td>
+          <td id='b3_starp_2'></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+
+  <table class="table table-bordered  shadow p-3 mb-5 bg-white rounded">
+    <tbody>
+      <tr>
+        <td id='a11_3'></td>
+        <td id='a12_3'></td>
+        <td id='a13_3'></td>
+        <td id='b1_3'></td>
+      </tr>
+      <tr>
+        <td id='a21_3'></td>
+        <td id='a22_3'></td>
+        <td id='a23_3'></td>
+        <td id='b2_3'></td>
+                        <td id='divider2'></td>
+      </tr>
+      <tr>
+        <td id='a31_3'></td>
+        <td id='a32_3'></td>
+        <td id='a33_3'></td>
+        <td id='b3_3'></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-bordered  shadow p-3 mb-5 bg-white rounded">
+    <tbody>
+      <tr>
+        <td id='a11_4'></td>
+        <td id='a12_4'></td>
+        <td id='a13_4'></td>
+        <td id='b1_4'></td>
+
+      </tr>
+      <tr>
+        <td id='a21_4'></td>
+        <td id='a22_4'></td>
+        <td id='a23_4'></td>
+        <td id='b2_4'></td>
+      </tr>
+      <tr>
+        <td id='a31_4'></td>
+        <td id='a32_4'></td>
+        <td id='a33_4'></td>
+        <td id='b3_4'></td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="alert alert-primary">
+  <p id='comment'>Intermediate calculation => R2 * R3 x1 coefficient + R3</p>
+    <table class="table table-bordered shadow p-3 mb-5 bg-white rounded">
+      <tbody>
+        <tr class="text-primary">
+          <td id='a11_starp_3'></td>
+          <td id='a12_starp_3'></td>
+          <td id='a13_starp_3'></td>
+          <td id='b1_starp_3'></td>
+        </tr>
+        <tr class="text-primary">
+          <td id='a21_starp_3'></td>
+          <td id='a22_starp_3'></td>
+          <td id='a23_starp_3'></td>
+          <td id='b2_starp_3'></td>
+        </tr>
+        <tr>
+          <td id='a31_starp_3'></td>
+          <td id='a32_starp_3'></td>
+          <td id='a33_starp_3'></td>
+          <td id='b3_starp_3'></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+
+  <table class="table table-bordered  shadow p-3 mb-5 bg-white rounded">
+    <tbody>
+      <tr>
+        <td id='a11_5'></td>
+        <td id='a12_5'></td>
+        <td id='a13_5'></td>
+        <td id='b1_5'></td>
+      </tr>
+      <tr>
+        <td id='a21_5'></td>
+        <td id='a22_5'></td>
+        <td id='a23_5'></td>
+        <td id='b2_5'></td>
+      </tr>
+      <tr>
+        <td id='a31_5'></td>
+        <td id='a32_5'></td>
+        <td id='a33_5'></td>
+        <td id='b3_5'></td>
+      </tr>
+    </tbody>
+  </table>
+  <h1>The Result: </h1>
+  <br>
+  <table class="table table-bordered  shadow p-3 mb-5 bg-white rounded">
+    <tbody>
+      <tr>
+        <td id='x'></td>
+        <td id='y'></td>
+        <td id='z'></td>
+      </tr>
+      <tr>
+    </tbody>
+  </table>
+
+
+  
+
+  <button  onClick="window.location.reload()" id="reCalculate" type="button" class="btn btn-primary col-lg-12 d-flex justify-content-center">Recalculate</button>
+<br>
+</div>
+
+
+<script src="app.js"></script>
+</html>
